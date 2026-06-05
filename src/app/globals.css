@@ -1,0 +1,193 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 10% 97%;
+    --foreground: 222 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 84% 4.9%;
+    --primary: 207 90% 54%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 300 90% 60%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 207 90% 54%;
+    --radius: 0.5rem;
+  }
+ 
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+    --card: 224 71% 9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 224 71% 4%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222 47% 11%;
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 210 40% 98%;
+    --accent-foreground: 222 47% 11%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 215 20% 65%;
+  }
+
+  .theme-howitsdone {
+    --background: 224 71% 4%; /* Deep, dark navy */
+    --foreground: 220 14% 80%;
+    --card: 224 71% 9%;
+    --card-foreground: 220 14% 85%;
+    --popover: 224 71% 6%;
+    --popover-foreground: 220 14% 85%;
+    --primary: 220 100% 70%; /* Vibrant electric blue */
+    --primary-foreground: 222 88% 13%;
+    --secondary: 224 71% 12%;
+    --secondary-foreground: 220 14% 80%;
+    --muted: 224 71% 12%;
+    --muted-foreground: 220 14% 50%;
+    --accent: 320 100% 65%; /* Sharp neon pink */
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 86% 97%;
+    --border: 224 71% 15%;
+    --input: 224 71% 15%;
+    --ring: 220 100% 70%;
+  }
+
+  .theme-golden {
+    --background: 0 0% 8%;
+    --foreground: 45 30% 85%;
+    --card: 0 0% 11%;
+    --card-foreground: 45 60% 88%;
+    --popover: 0 0% 4%;
+    --popover-foreground: 45 60% 88%;
+    --primary: 45 85% 55%;
+    --primary-foreground: 45 100% 5%;
+    --secondary: 0 0% 14%;
+    --secondary-foreground: 45 60% 88%;
+    --muted: 0 0% 14%;
+    --muted-foreground: 45 30% 65%;
+    --accent: 45 85% 55%;
+    --accent-foreground: 45 100% 5%;
+    --destructive: 0 70% 40%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 45 85% 55%;
+  }
+
+  .theme-takedown {
+    --background: 247 38% 15%;
+    --foreground: 300 90% 85%;
+    --card: 247 38% 20%;
+    --card-foreground: 300 90% 85%;
+    --primary: 345 80% 65%;
+    --primary-foreground: 345 100% 95%;
+    --secondary: 247 38% 25%;
+    --secondary-foreground: 300 90% 85%;
+    --muted: 247 38% 22%;
+    --muted-foreground: 247 20% 65%;
+    --accent: 290 80% 70%;
+    --accent-foreground: 290 100% 95%;
+    --border: 247 38% 28%;
+    --input: 247 38% 25%;
+    --ring: 345 80% 65%;
+  }
+
+  .theme-christmas {
+    --background: 10 10% 97%;
+    --foreground: 10 90% 5%;
+    --card: 0 0% 100%;
+    --primary: 0 72% 51%; /* Red */
+    --primary-foreground: 0 0% 100%;
+    --accent: 145 63% 42%; /* Green */
+    --accent-foreground: 0 0% 100%;
+    --secondary: 10 20% 94%;
+    --muted: 10 20% 94%;
+    --border: 10 20% 88%;
+  }
+}
+ 
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Bubble animation styles */
+@keyframes rise {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.7;
+  }
+  90% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+.bubble {
+  position: absolute;
+  bottom: -100px;
+  background-color: hsla(var(--primary), 0.2);
+  border-radius: 50%;
+  animation: rise linear infinite;
+}
+
+#bubble-bg {
+    /* Correctly hide by default but allow transitions */
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.bubble-effect-active #bubble-bg {
+    /* Show when the specific theme or the toggle class is active */
+    visibility: visible;
+    opacity: 1;
+}
+
+.theme-golden .bg-gradient-to-br {
+    background-image: none;
+    background-color: hsl(var(--primary));
+}
