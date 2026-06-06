@@ -4,7 +4,7 @@ import { Skeleton } from "@/components/ui/skeleton"
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useUser, useFirestore } from "@/firebase";
-import { CalendarDays, Coins, Gift, ShoppingCart, Star, Ticket, Copy, ArrowRight, Percent, Check, Loader2, X, Palette, Warehouse, Sparkles, Clock, Shield, Info, Trophy, Zap, Wallet, BarChart2, Briefcase, Menu, MoreHorizontal, MessageSquare, Users, Plus } from "lucide-react";
+import { CalendarDays, Coins, Gift, ShoppingCart, Star, Ticket, Copy, ArrowRight, Percent, Check, Loader2, X, Palette, Warehouse, Sparkles, Clock, Shield, Info, Trophy, Zap, Wallet, BarChart2, Briefcase, Menu, MoreHorizontal, MessageSquare, Users, Plus, Gamepad2, Sprout } from "lucide-react";
 import Link from "next/link";
 import {
   Dialog,
@@ -34,7 +34,7 @@ import { RedeemCreditsDialog } from "@/components/redeem-credits-dialog";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import { useLoading } from "@/context/loading-context";
 import { useRouter } from "next/navigation";
-
+import { PlayToEarnModal } from "@/components/play-to-earn-modal";
 
 type UserProfile = {
     displayName: string;
@@ -192,7 +192,7 @@ function RecentActivity({ user }: { user: any }) {
         'bonus': <Star className="text-yellow-500" />,
         'investment_deposit': <Wallet className="text-blue-500" />,
         'investment_cashout': <Coins className="text-green-500" />,
-        'investment_start': <Zap className="text-purple-500" />,
+        'investment_start': <Sprout className="text-purple-500" />,
         'investment_withdraw': <BarChart2 className="text-blue-500" />,
         'chat': <MessageSquare className="text-blue-500" />,
         'private_chat': <MessageSquare className="text-blue-500" />,
@@ -554,18 +554,25 @@ export default function DashboardPage() {
                     </LoadingLink>
                 )}
                 
+                <PlayToEarnModal>
+                    <Button className="w-full h-16 bg-primary/80 hover:bg-primary text-white text-lg font-bold">
+                        <Gamepad2 className="mr-2 h-6 w-6" />
+                        Play to Earn
+                    </Button>
+                </PlayToEarnModal>
+                
                 {/* Quick Actions */}
                 <div className="grid grid-cols-4 gap-4 text-center">
-                    <LoadingLink href="/dashboard/shop" className="flex flex-col items-center gap-2 p-2 rounded-lg hover:bg-card">
-                         <div className="p-3 bg-card rounded-full shadow-sm"><Ticket className="text-primary"/></div>
-                         <span className="text-xs font-medium">Buy Voucher</span>
-                    </LoadingLink>
-                     <RedeemCreditsDialog profile={profile}>
+                    <RedeemCreditsDialog profile={profile}>
                         <div className="flex flex-col items-center gap-2 p-2 rounded-lg hover:bg-card">
                              <div className="p-3 bg-card rounded-full shadow-sm"><Gift className="text-primary"/></div>
                              <span className="text-xs font-medium">Redeem Code</span>
                         </div>
                     </RedeemCreditsDialog>
+                    <LoadingLink href="/dashboard/shop" className="flex flex-col items-center gap-2 p-2 rounded-lg hover:bg-card">
+                         <div className="p-3 bg-card rounded-full shadow-sm"><Ticket className="text-primary"/></div>
+                         <span className="text-xs font-medium">Buy Voucher</span>
+                    </LoadingLink>
                     <LoadingLink href="/dashboard/events" className="relative flex flex-col items-center gap-2 p-2 rounded-lg hover:bg-card">
                         {hasUnclaimedRewards && (
                             <span className="absolute top-1 right-1 flex h-3 w-3">
@@ -583,7 +590,7 @@ export default function DashboardPage() {
                                 <span className="relative inline-flex rounded-full h-3 w-3 bg-accent"></span>
                             </span>
                         )}
-                        <div className="p-3 bg-card rounded-full shadow-sm"><Zap className="text-primary"/></div>
+                        <div className="p-3 bg-card rounded-full shadow-sm"><Sprout className="text-primary"/></div>
                         <span className="text-xs font-medium">Investment</span>
                     </LoadingLink>
                 </div>
