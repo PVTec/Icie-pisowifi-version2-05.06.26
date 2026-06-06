@@ -1,0 +1,509 @@
+
+
+{
+    "entities": {
+        "UserProfile": {
+            "title": "User Profile",
+            "description": "Represents a user's profile in the system.",
+            "type": "object",
+            "properties": {
+                "displayName": {
+                    "type": "string",
+                    "description": "The user's display name."
+                },
+                "email": {
+                    "type": "string",
+                    "format": "email",
+                    "description": "The user's email address."
+                },
+                "credits": {
+                    "type": "number",
+                    "description": "The number of credits the user has."
+                },
+                "walletBalance": {
+                    "type": "number",
+                    "description": "The user's savings account balance."
+                },
+                "bankBalance": {
+                    "type": "number",
+                    "description": "The user's active investment balance."
+                },
+                "photoURL": {
+                    "type": "string",
+                    "description": "The URL of the user's profile picture."
+                },
+                "pinEnabled": {
+                    "type": "boolean",
+                    "description": "Whether the user has enabled PIN code security."
+                },
+                "pinCode": {
+                    "type": "string",
+                    "description": "The user's 4-digit security PIN."
+                },
+                "lastBonusClaimedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "The timestamp when the user last claimed their daily bonus."
+                },
+                "welcomeBonusClaimed": {
+                    "type": "boolean",
+                    "description": "Whether the user has claimed their initial welcome bonus."
+                },
+                "investmentBonusClaimed": {
+                    "type": "boolean",
+                    "description": "Whether the user has claimed their one-time investment seed fund."
+                },
+                "freeBuffClaimed": {
+                    "type": "boolean",
+                    "description": "Whether the user has claimed their one-time free 30% investment buff."
+                },
+                "hasMadePurchase": {
+                    "type": "boolean",
+                    "description": "Whether the user has made their first purchase."
+                },
+                 "investmentBuffs": {
+                    "type": "object",
+                    "description": "A map of investment buff IDs to the quantity owned by the user.",
+                    "additionalProperties": {
+                        "type": "object",
+                        "properties": {
+                            "qty": { "type": "number" },
+                            "purchaseCount": { "type": "number" }
+                        }
+                    },
+                    "properties": {
+                        "lastPurchased_WIN_50": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "Timestamp for the last purchase of the 50% win buff."
+                        }
+                    }
+                },
+                "monthlyEvent": {
+                    "type": "object",
+                    "description": "Tracks user progress for the current monthly event.",
+                    "properties": {
+                        "month": {
+                            "type": "string",
+                            "description": "The month of the event cycle, in YYYY-MM format."
+                        },
+                        "arenaCreditsWon": {
+                            "type": "number",
+                            "description": "Total credits won in the Arena this month."
+                        },
+                        "vouchersPurchased": {
+                            "type": "number",
+                            "description": "Total number of vouchers purchased this month."
+                        },
+                        "claimedRewards": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            },
+                            "description": "A list of reward IDs that have been claimed this month."
+                        }
+                    }
+                },
+                "purchasedThemes": {
+                    "type": "array",
+                    "description": "An array of theme IDs that the user has purchased.",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "activeTheme": {
+                    "type": "string",
+                    "description": "The ID of the currently active theme for the user."
+                },
+                "purchasedBubbleEffect": {
+                    "type": "boolean",
+                    "description": "Whether the user has purchased the bubble cosmetic effect."
+                },
+                "bubbleEffectActive": {
+                    "type": "boolean",
+                    "description": "Whether the bubble cosmetic effect is currently active."
+                },
+                "bubbleEffectTrialClaimed": {
+                    "type": "boolean",
+                    "description": "True if the user has claimed their one-time bubble effect trial."
+                },
+                "bubbleEffectTrialExpiresAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Timestamp for when the 3-hour bubble effect trial ends."
+                },
+                "bgmThemeTrialExpiresAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Timestamp for when the 36-hour BGM/Theme trial ends."
+                },
+                "universalAccessExpiresAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Grants the user access to the Arena from any network until this time."
+                },
+                "lastSeen": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "The timestamp when the user was last active."
+                },
+                 "conversations": {
+                    "type": "object",
+                    "description": "A map of conversation IDs to metadata about the conversation.",
+                    "additionalProperties": {
+                        "type": "object",
+                        "properties": {
+                            "unreadCount": {
+                                "type": "number"
+                            },
+                            "lastMessage": {
+                                "type": "string"
+                            },
+                             "lastMessageTimestamp": {
+                                "type": "string",
+                                "format": "date-time"
+                            }
+                        }
+                    }
+                },
+                "adminMessage": {
+                    "type": "string",
+                    "description": "A one-time message sent from an admin to this user, displayed as a notification."
+                },
+                "typingIn": {
+                    "type": ["string", "null"],
+                    "description": "The conversationId or 'global' the user is currently typing in, or null."
+                },
+                 "dailyChatCredits": {
+                    "type": "number",
+                    "description": "The total credits earned from chat activities for the current day."
+                },
+                "lastChatCreditReset": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "The timestamp when the daily chat credit counter was last reset."
+                },
+                "investment": {
+                    "type": "object",
+                    "description": "Stores the user's current investment details.",
+                    "properties": {
+                        "isActive": {
+                            "type": "boolean"
+                        },
+                        "history": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "change": { "type": "number" },
+                                    "timestamp": { "type": "string", "format": "date-time" }
+                                }
+                            }
+                        },
+                        "growthTarget": {
+                            "type": "number"
+                        },
+                        "initialInvestmentAmount": {
+                           "type": "number"
+                        },
+                        "activeInvestmentLevel": {
+                            "type": "number"
+                        },
+                        "investmentStartedAt": {
+                            "type": "string",
+                            "format": "date-time"
+                        },
+                        "investmentEndsAt": {
+                            "type": "string",
+                            "format": "date-time"
+                        },
+                        "buffCode": {
+                            "type": "string"
+                        },
+                        "activeBuff": {
+                            "type": "string",
+                            "description": "The ID of the buff being used for the current investment session."
+                        }
+                    }
+                }
+            },
+            "required": ["displayName", "email", "credits"]
+        },
+        "Transaction": {
+            "title": "Transaction",
+            "description": "Represents a credit transaction for a user.",
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "The type of transaction.",
+                    "enum": ["voucher_purchase", "redeem", "bonus", "theme_purchase", "effect_purchase", "chat", "private_chat", "investment_deposit", "investment_cashout", "investment_start", "investment_withdraw", "referral_bonus", "buff_purchase"]
+                },
+                "description": {
+                    "type": "string",
+                    "description": "A description of the transaction."
+                },
+                "amount": {
+                    "type": "number",
+                    "description": "The amount of credits transacted. Can be positive or negative."
+                },
+                "createdAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "The timestamp when the transaction occurred."
+                },
+                "voucherCode": {
+                    "type": "string",
+                    "description": "The generated voucher code for a purchase transaction."
+                }
+            },
+            "required": ["type", "description", "amount", "createdAt"]
+        },
+        "VoucherTemplate": {
+            "title": "Voucher Template",
+            "description": "Represents a type of WiFi voucher available for purchase.",
+            "type": "object",
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "The title of the voucher template (e.g., '1 Hour Wifi')."
+                },
+                "price": {
+                    "type": "number",
+                    "description": "The cost of the voucher in credits."
+                },
+                 "description": {
+                    "type": "string",
+                    "description": "A short description of the voucher."
+                }
+            },
+            "required": ["title", "price", "description"]
+        },
+        "VoucherCode": {
+            "title": "Voucher Code",
+            "description": "Represents a unique, purchasable WiFi voucher code.",
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "string",
+                    "description": "The unique voucher code string."
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The status of the code.",
+                    "enum": ["active", "used"]
+                },
+                "duration": {
+                    "type": "string",
+                    "description": "The duration of the voucher (e.g., '1h 30m')."
+                },
+                "createdAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Timestamp when the code was created."
+                },
+                "usedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Timestamp when the code was used."
+                },
+                "usedBy": {
+                    "type": "string",
+                    "description": "The UID of the user who used (purchased) the code."
+                }
+            },
+            "required": ["code", "status", "createdAt", "duration"]
+        },
+        "CreditCode": {
+            "title": "Credit Code",
+            "description": "Represents a redeemable code for credits.",
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "string",
+                    "description": "The unique, redeemable code string."
+                },
+                "credits": {
+                    "type": "number",
+                    "description": "The number of credits this code provides."
+                },
+                 "themeId": {
+                    "type": "string",
+                    "description": "Optional. The ID of an exclusive theme unlocked by this code."
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The status of the code.",
+                    "enum": ["active", "redeemed"]
+                },
+                "createdAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Timestamp when the code was created."
+                },
+                "redeemedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Timestamp when the code was redeemed."
+                },
+                "redeemedBy": {
+                    "type": "string",
+                    "description": "The UID of the user who redeemed the code."
+                }
+            },
+            "required": ["code", "credits", "status", "createdAt"]
+        },
+        "ChatMessage": {
+            "title": "Chat Message",
+            "description": "Represents a single message in the global chat.",
+            "type": "object",
+            "properties": {
+                "text": {
+                    "type": "string",
+                    "description": "The content of the chat message."
+                },
+                "createdAt": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "userId": {
+                    "type": "string"
+                },
+                "displayName": {
+                    "type": "string"
+                },
+                "photoURL": {
+                    "type": "string"
+                },
+                "reactions": {
+                    "type": "object",
+                    "description": "A map of emoji reactions to an array of user IDs.",
+                    "additionalProperties": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "required": ["text", "createdAt", "userId", "displayName", "photoURL"]
+        },
+        "PrivateMessage": {
+            "title": "Private Message",
+            "description": "Represents a single message in a private conversation.",
+            "type": "object",
+            "properties": {
+                "text": { "type": "string" },
+                "createdAt": { "type": "string", "format": "date-time" },
+                "senderId": { "type": "string" },
+                "receiverId": { "type": "string" },
+                "isRead": { "type": "boolean" },
+                "reactions": {
+                    "type": "object",
+                    "description": "A map of emoji reactions to an array of user IDs.",
+                    "additionalProperties": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "required": ["text", "createdAt", "senderId", "receiverId", "isRead"]
+        },
+        "TicTacToeGame": {
+            "title": "Tic Tac Toe Game",
+            "description": "Represents a game of Tic Tac Toe between two players.",
+            "type": "object",
+            "properties": {
+                "player1Id": { "type": "string" },
+                "player2Id": { "type": "string" },
+                "player1DisplayName": { "type": "string" },
+                "player2DisplayName": { "type": "string" },
+                "player1PhotoURL": { "type": "string" },
+                "player2PhotoURL": { "type": "string" },
+                "betAmount": { "type": "number", "default": 0 },
+                "player1Bet": { "type": "number" },
+                "player2Bet": { "type": "number" },
+                "player1Agreed": { "type": "boolean", "default": false },
+                "player2Agreed": { "type": "boolean", "default": false },
+                "player1Ready": { "type": "boolean", "default": false },
+                "player2Ready": { "type": "boolean", "default": false },
+                "negotiationRound": { "type": "number", "default": 1 },
+                "board": {
+                    "type": "array",
+                    "items": { "type": ["string", "null"] },
+                    "maxItems": 9,
+                    "minItems": 9
+                },
+                "nextPlayer": { "type": "string" },
+                "status": {
+                    "type": "string",
+                    "enum": ["pending", "betting", "negotiating", "readying", "playing", "finished", "declined", "cancelled"]
+                },
+                "winner": { "type": "string" },
+                "rematchId": { "type": "string" },
+                "rematchRequestedBy": { "type": "string" },
+                "createdAt": { "type": "string", "format": "date-time" },
+                "playerX": { "type": "string" },
+                "playerO": { "type": "string" },
+                "placementCount": { "type": "number" },
+                "selectedPieceIndex": { "type": "number" }
+            },
+            "required": ["player1Id", "player2Id", "board", "nextPlayer", "status", "createdAt"]
+        }
+    },
+    "auth": {
+        "providers": ["email-password"]
+    },
+    "firestore": {
+        "/users/{userId}": {
+            "schema": {
+                "$ref": "#/backend/entities/UserProfile"
+            },
+            "description": "Stores user profile information."
+        },
+        "/users/{userId}/transactions/{transactionId}": {
+            "schema": {
+                "$ref": "#/backend/entities/Transaction"
+            },
+            "description": "Stores a user's credit transaction history."
+        },
+        "/voucher_templates/{templateId}": {
+            "schema": {
+                "$ref": "#/backend/entities/VoucherTemplate"
+            },
+            "description": "Stores all available WiFi voucher templates for the shop."
+        },
+        "/voucher_templates/{templateId}/voucher_codes/{codeId}": {
+            "schema": {
+                "$ref": "#/backend/entities/VoucherCode"
+            },
+            "description": "Stores the inventory of unique voucher codes for a template."
+        },
+        "/credit_codes/{codeId}": {
+            "schema": {
+                "$ref": "#/backend/entities/CreditCode"
+            },
+            "description": "Stores all redeemable credit codes."
+        },
+        "/chat_messages/{messageId}": {
+            "schema": {
+                "$ref": "#/backend/entities/ChatMessage"
+            },
+            "description": "Stores all messages for the global chat room."
+        },
+        "/private_chats/{conversationId}/messages/{messageId}": {
+            "schema": {
+                "$ref": "#/backend/entities/PrivateMessage"
+            },
+            "description": "Stores messages for a private conversation between two users."
+        },
+        "/tic_tac_toe_games/{gameId}": {
+            "schema": {
+                "$ref": "#/backend/entities/TicTacToeGame"
+            },
+            "description": "Stores the state of a Tic Tac Toe game session."
+        }
+    }
+}
