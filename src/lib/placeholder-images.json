@@ -1,0 +1,34 @@
+{
+  "placeholderImages": [
+    {
+      "id": "deal-1",
+      "description": "A person using a laptop in a cafe, representing a wifi deal.",
+      "imageUrl": "https://images.unsplash.com/photo-1605727503497-0c6faa0d17c1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8bGFwdG9wJTIwY2FmZXxlbnwwfHx8fDE3NjMxMDE2NjN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "laptop cafe"
+    },
+    {
+      "id": "deal-2",
+      "description": "A family streaming a movie at home, representing a family wifi plan.",
+      "imageUrl": "https://images.unsplash.com/photo-1573502344213-f7407f6685f3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxmYW1pbHklMjBtb3ZpZXxlbnwwfHx8fDE3NjMxMDE2NjN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "family movie"
+    },
+    {
+      "id": "deal-3",
+      "description": "A neon sign that says 'deal', representing a special offer.",
+      "imageUrl": "https://images.unsplash.com/photo-1758600587382-2d7da8b9e361?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxkZWFsJTIwc2lnbnxlbnwwfHx8fDE3NjMxMDI0Mzl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "deal sign"
+    },
+    {
+      "id": "event-1",
+      "description": "People playing video games together, for a play-and-earn event.",
+      "imageUrl": "https://images.unsplash.com/photo-1593305844225-9a4f6640523a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxnYW1pbmclMjB0b3VybmFtZW50fGVufDB8fHx8MTc2ODQ1NjQ3M3ww&ixlib=rb-4.0.3&q=80&w=1080",
+      "imageHint": "gaming tournament"
+    },
+    {
+      "id": "event-2",
+      "description": "A person looking at a phone screen with points and rewards.",
+      "imageUrl": "https://images.unsplash.com/photo-1557862921-37829c790f19?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxyZWZlcnJhbCUyMGJvbnVzfGVufDB8fHx8MTc2ODQ1NjQ3M3ww&ixlib=rb-4.0.3&q=80&w=1080",
+      "imageHint": "referral bonus"
+    }
+  ]
+}
